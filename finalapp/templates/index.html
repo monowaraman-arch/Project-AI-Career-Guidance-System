@@ -1,0 +1,1788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Career Guidance System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+            background-image: radial-gradient(circle at top right, #1e293b, #0f172a);
+            background-attachment: fixed;
+        }
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="min-h-screen py-10 px-4 sm:px-6 lg:px-8">
+
+<div class="max-w-7xl mx-auto">
+    <!-- Header -->
+    <div class="text-center mb-12">
+        <h1 class="text-5xl font-extrabold tracking-tight mb-4 gradient-text">AI Career Predictor</h1>
+        <p class="text-lg text-slate-400 max-w-2xl mx-auto">Discover your ideal career path based on your technical expertise and personality traits. Fill out the questionnaire below to get started.</p>
+    </div>
+
+    <form action="{% url 'finalapp:predict' %}" method="post" class="glass-panel rounded-2xl p-8 sm:p-12 mb-10">
+        {% csrf_token %}
+        
+        <!-- Part 1: Technical Skills -->
+        <div class="mb-16">
+            <div class="border-b border-slate-700 pb-4 mb-8">
+                <h2 class="text-3xl font-bold text-white mb-2">Part 1: Technical Skills</h2>
+                <p class="text-slate-400">Rate your skills in the following domains based on your university courses on a scale of 1-7 (1 = Poor, 7 = Excellent).</p>
+            </div>
+            <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+
+                <div class="bg-slate-800/50 p-5 rounded-xl border border-slate-700 hover:border-sky-500/50 transition-colors">
+                    <label class="block text-sm font-medium text-slate-300 mb-3">Database Fundamentals <span class="text-xs text-slate-400 font-normal block mt-1">(CSE 311 Database Systems, CSE 411 Advanced Database Systems)</span></label>
+                    <div class="flex justify-between gap-1">
+                        
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="db_rating" value="1" class="peer sr-only" checked>
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">1</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="db_rating" value="2" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">2</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="db_rating" value="3" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">3</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="db_rating" value="4" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">4</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="db_rating" value="5" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">5</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="db_rating" value="6" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">6</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="db_rating" value="7" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">7</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 p-5 rounded-xl border border-slate-700 hover:border-sky-500/50 transition-colors">
+                    <label class="block text-sm font-medium text-slate-300 mb-3">Computer Architecture <span class="text-xs text-slate-400 font-normal block mt-1">(CSE 332 Computer Organization and Architecture, CSE 433 Advanced Computer Architecture)</span></label>
+                    <div class="flex justify-between gap-1">
+                        
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="comp_arch_rating" value="1" class="peer sr-only" checked>
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">1</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="comp_arch_rating" value="2" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">2</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="comp_arch_rating" value="3" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">3</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="comp_arch_rating" value="4" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">4</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="comp_arch_rating" value="5" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">5</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="comp_arch_rating" value="6" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">6</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="comp_arch_rating" value="7" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">7</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 p-5 rounded-xl border border-slate-700 hover:border-sky-500/50 transition-colors">
+                    <label class="block text-sm font-medium text-slate-300 mb-3">Distributed Computing Systems <span class="text-xs text-slate-400 font-normal block mt-1">(CSE 323 Operating Systems Design, CSE 422 Modelling and Simulation)</span></label>
+                    <div class="flex justify-between gap-1">
+                        
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="dist_comp_rating" value="1" class="peer sr-only" checked>
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">1</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="dist_comp_rating" value="2" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">2</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="dist_comp_rating" value="3" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">3</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="dist_comp_rating" value="4" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">4</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="dist_comp_rating" value="5" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">5</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="dist_comp_rating" value="6" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">6</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="dist_comp_rating" value="7" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">7</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 p-5 rounded-xl border border-slate-700 hover:border-sky-500/50 transition-colors">
+                    <label class="block text-sm font-medium text-slate-300 mb-3">Cyber Security <span class="text-xs text-slate-400 font-normal block mt-1">(Network Security & Basic Security Concepts)</span></label>
+                    <div class="flex justify-between gap-1">
+                        
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="cybersecurity" value="1" class="peer sr-only" checked>
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">1</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="cybersecurity" value="2" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">2</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="cybersecurity" value="3" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">3</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="cybersecurity" value="4" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">4</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="cybersecurity" value="5" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">5</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="cybersecurity" value="6" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">6</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="cybersecurity" value="7" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">7</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 p-5 rounded-xl border border-slate-700 hover:border-sky-500/50 transition-colors">
+                    <label class="block text-sm font-medium text-slate-300 mb-3">Networking <span class="text-xs text-slate-400 font-normal block mt-1">(CSE 438 Data Communication & Network, CSE 486 Mobile and Wireless App Dev)</span></label>
+                    <div class="flex justify-between gap-1">
+                        
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="networking" value="1" class="peer sr-only" checked>
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">1</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="networking" value="2" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">2</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="networking" value="3" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">3</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="networking" value="4" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">4</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="networking" value="5" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">5</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="networking" value="6" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">6</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="networking" value="7" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">7</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 p-5 rounded-xl border border-slate-700 hover:border-sky-500/50 transition-colors">
+                    <label class="block text-sm font-medium text-slate-300 mb-3">Development <span class="text-xs text-slate-400 font-normal block mt-1">(CSE 424 Object-Oriented Software Developments, CSE 482 Internet and Web Tech)</span></label>
+                    <div class="flex justify-between gap-1">
+                        
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="development" value="1" class="peer sr-only" checked>
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">1</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="development" value="2" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">2</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="development" value="3" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">3</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="development" value="4" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">4</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="development" value="5" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">5</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="development" value="6" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">6</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="development" value="7" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">7</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 p-5 rounded-xl border border-slate-700 hover:border-sky-500/50 transition-colors">
+                    <label class="block text-sm font-medium text-slate-300 mb-3">Programming Skills <span class="text-xs text-slate-400 font-normal block mt-1">(CSE 215 PL II, CSE 225 DSA, CSE 401 Advanced Programming Techniques)</span></label>
+                    <div class="flex justify-between gap-1">
+                        
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="programmingskills" value="1" class="peer sr-only" checked>
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">1</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="programmingskills" value="2" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">2</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="programmingskills" value="3" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">3</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="programmingskills" value="4" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">4</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="programmingskills" value="5" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">5</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="programmingskills" value="6" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">6</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="programmingskills" value="7" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">7</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 p-5 rounded-xl border border-slate-700 hover:border-sky-500/50 transition-colors">
+                    <label class="block text-sm font-medium text-slate-300 mb-3">Project Management <span class="text-xs text-slate-400 font-normal block mt-1">(CSE 428 Software Process Management, CSE499A/B Senior Design)</span></label>
+                    <div class="flex justify-between gap-1">
+                        
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="project_management_rating" value="1" class="peer sr-only" checked>
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">1</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="project_management_rating" value="2" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">2</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="project_management_rating" value="3" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">3</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="project_management_rating" value="4" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">4</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="project_management_rating" value="5" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">5</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="project_management_rating" value="6" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">6</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="project_management_rating" value="7" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">7</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 p-5 rounded-xl border border-slate-700 hover:border-sky-500/50 transition-colors">
+                    <label class="block text-sm font-medium text-slate-300 mb-3">Computer Forensics Fundamental <span class="text-xs text-slate-400 font-normal block mt-1">(CSE 331 Microprocessor Interfacing & Embedded System)</span></label>
+                    <div class="flex justify-between gap-1">
+                        
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="computer_forensics_fundamental_rating" value="1" class="peer sr-only" checked>
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">1</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="computer_forensics_fundamental_rating" value="2" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">2</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="computer_forensics_fundamental_rating" value="3" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">3</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="computer_forensics_fundamental_rating" value="4" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">4</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="computer_forensics_fundamental_rating" value="5" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">5</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="computer_forensics_fundamental_rating" value="6" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">6</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="computer_forensics_fundamental_rating" value="7" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">7</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 p-5 rounded-xl border border-slate-700 hover:border-sky-500/50 transition-colors">
+                    <label class="block text-sm font-medium text-slate-300 mb-3">Technical Communication <span class="text-xs text-slate-400 font-normal block mt-1">(CSE 299 Junior Design Course, CSE 498 Internship)</span></label>
+                    <div class="flex justify-between gap-1">
+                        
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="technical_communication_rating" value="1" class="peer sr-only" checked>
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">1</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="technical_communication_rating" value="2" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">2</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="technical_communication_rating" value="3" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">3</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="technical_communication_rating" value="4" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">4</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="technical_communication_rating" value="5" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">5</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="technical_communication_rating" value="6" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">6</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="technical_communication_rating" value="7" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">7</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 p-5 rounded-xl border border-slate-700 hover:border-sky-500/50 transition-colors">
+                    <label class="block text-sm font-medium text-slate-300 mb-3">AI / ML <span class="text-xs text-slate-400 font-normal block mt-1">(CSE 440 Artificial Intelligence, CSE 445 Machine Learning)</span></label>
+                    <div class="flex justify-between gap-1">
+                        
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="ai_ml_rating" value="1" class="peer sr-only" checked>
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">1</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="ai_ml_rating" value="2" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">2</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="ai_ml_rating" value="3" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">3</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="ai_ml_rating" value="4" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">4</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="ai_ml_rating" value="5" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">5</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="ai_ml_rating" value="6" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">6</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="ai_ml_rating" value="7" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">7</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 p-5 rounded-xl border border-slate-700 hover:border-sky-500/50 transition-colors">
+                    <label class="block text-sm font-medium text-slate-300 mb-3">Software Engineering <span class="text-xs text-slate-400 font-normal block mt-1">(CSE 327 Software Engineering, CSE 429 Software System Architecture)</span></label>
+                    <div class="flex justify-between gap-1">
+                        
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="software_eng_rating" value="1" class="peer sr-only" checked>
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">1</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="software_eng_rating" value="2" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">2</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="software_eng_rating" value="3" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">3</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="software_eng_rating" value="4" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">4</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="software_eng_rating" value="5" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">5</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="software_eng_rating" value="6" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">6</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="software_eng_rating" value="7" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">7</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 p-5 rounded-xl border border-slate-700 hover:border-sky-500/50 transition-colors">
+                    <label class="block text-sm font-medium text-slate-300 mb-3">Business Analysis <span class="text-xs text-slate-400 font-normal block mt-1">(CSE 427 Software Quality Assurances & Testing)</span></label>
+                    <div class="flex justify-between gap-1">
+                        
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="business_analysis_rating" value="1" class="peer sr-only" checked>
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">1</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="business_analysis_rating" value="2" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">2</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="business_analysis_rating" value="3" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">3</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="business_analysis_rating" value="4" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">4</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="business_analysis_rating" value="5" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">5</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="business_analysis_rating" value="6" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">6</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="business_analysis_rating" value="7" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">7</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 p-5 rounded-xl border border-slate-700 hover:border-sky-500/50 transition-colors">
+                    <label class="block text-sm font-medium text-slate-300 mb-3">Communication skills <span class="text-xs text-slate-400 font-normal block mt-1">(CSE 299 Junior Design, CSE499A/B Senior Design)</span></label>
+                    <div class="flex justify-between gap-1">
+                        
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="communication_skills_rating" value="1" class="peer sr-only" checked>
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">1</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="communication_skills_rating" value="2" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">2</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="communication_skills_rating" value="3" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">3</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="communication_skills_rating" value="4" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">4</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="communication_skills_rating" value="5" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">5</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="communication_skills_rating" value="6" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">6</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="communication_skills_rating" value="7" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">7</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 p-5 rounded-xl border border-slate-700 hover:border-sky-500/50 transition-colors">
+                    <label class="block text-sm font-medium text-slate-300 mb-3">Data Science <span class="text-xs text-slate-400 font-normal block mt-1">(CSE 419 Data Mining, CSE 417 Numerical Methods)</span></label>
+                    <div class="flex justify-between gap-1">
+                        
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="data_science_rating" value="1" class="peer sr-only" checked>
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">1</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="data_science_rating" value="2" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">2</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="data_science_rating" value="3" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">3</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="data_science_rating" value="4" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">4</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="data_science_rating" value="5" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">5</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="data_science_rating" value="6" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">6</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="data_science_rating" value="7" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">7</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 p-5 rounded-xl border border-slate-700 hover:border-sky-500/50 transition-colors">
+                    <label class="block text-sm font-medium text-slate-300 mb-3">Troubleshooting skills <span class="text-xs text-slate-400 font-normal block mt-1">(EEE 141 Electrical Circuits I, CSE 231 Digital Logic design)</span></label>
+                    <div class="flex justify-between gap-1">
+                        
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="troubleshooting-rating" value="1" class="peer sr-only" checked>
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">1</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="troubleshooting-rating" value="2" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">2</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="troubleshooting-rating" value="3" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">3</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="troubleshooting-rating" value="4" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">4</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="troubleshooting-rating" value="5" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">5</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="troubleshooting-rating" value="6" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">6</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="troubleshooting-rating" value="7" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">7</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 p-5 rounded-xl border border-slate-700 hover:border-sky-500/50 transition-colors">
+                    <label class="block text-sm font-medium text-slate-300 mb-3">Graphics Designing <span class="text-xs text-slate-400 font-normal block mt-1">(CSE 418 Computer Graphics, CSE 467 Digital Image Processing)</span></label>
+                    <div class="flex justify-between gap-1">
+                        
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="graphics-designing-rating" value="1" class="peer sr-only" checked>
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">1</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="graphics-designing-rating" value="2" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">2</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="graphics-designing-rating" value="3" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">3</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="graphics-designing-rating" value="4" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">4</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="graphics-designing-rating" value="5" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">5</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="graphics-designing-rating" value="6" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">6</div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="graphics-designing-rating" value="7" class="peer sr-only" >
+                            <div class="text-center py-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-sky-500 peer-checked:border-sky-500 peer-checked:text-white hover:bg-slate-600 transition-all text-sm font-semibold">7</div>
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Part 2: Personality Traits -->
+        <div>
+            <div class="border-b border-slate-700 pb-4 mb-8">
+                <h2 class="text-3xl font-bold text-white mb-2">Part 2: Personality Traits</h2>
+                <p class="text-slate-400">Indicate the extent to which you agree or disagree with the following statements.</p>
+            </div>
+            <div class="grid gap-6 lg:grid-cols-2">
+
+                <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700 hover:border-indigo-500/50 transition-colors">
+                    <label class="block text-base font-medium text-slate-200 mb-4">I am the life of the party.</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2">
+                        
+                        <label class="cursor-pointer">
+                            <input type="radio" name="ext1" value="Strongly Disagree" class="peer sr-only" checked>
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="ext1" value="Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="ext1" value="Slightly Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="ext1" value="Neutral" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Neutral</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="ext1" value="Slightly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="ext1" value="Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="ext1" value="Strongly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Agree</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700 hover:border-indigo-500/50 transition-colors">
+                    <label class="block text-base font-medium text-slate-200 mb-4">I don't talk a lot.</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2">
+                        
+                        <label class="cursor-pointer">
+                            <input type="radio" name="ext2" value="Strongly Disagree" class="peer sr-only" checked>
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="ext2" value="Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="ext2" value="Slightly Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="ext2" value="Neutral" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Neutral</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="ext2" value="Slightly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="ext2" value="Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="ext2" value="Strongly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Agree</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700 hover:border-indigo-500/50 transition-colors">
+                    <label class="block text-base font-medium text-slate-200 mb-4">I feel comfortable around people.</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2">
+                        
+                        <label class="cursor-pointer">
+                            <input type="radio" name="ext3" value="Strongly Disagree" class="peer sr-only" checked>
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="ext3" value="Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="ext3" value="Slightly Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="ext3" value="Neutral" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Neutral</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="ext3" value="Slightly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="ext3" value="Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="ext3" value="Strongly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Agree</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700 hover:border-indigo-500/50 transition-colors">
+                    <label class="block text-base font-medium text-slate-200 mb-4">I am quiet around strangers.</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2">
+                        
+                        <label class="cursor-pointer">
+                            <input type="radio" name="ext4" value="Strongly Disagree" class="peer sr-only" checked>
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="ext4" value="Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="ext4" value="Slightly Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="ext4" value="Neutral" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Neutral</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="ext4" value="Slightly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="ext4" value="Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="ext4" value="Strongly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Agree</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700 hover:border-indigo-500/50 transition-colors">
+                    <label class="block text-base font-medium text-slate-200 mb-4">I get stressed out easily.</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2">
+                        
+                        <label class="cursor-pointer">
+                            <input type="radio" name="est1" value="Strongly Disagree" class="peer sr-only" checked>
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="est1" value="Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="est1" value="Slightly Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="est1" value="Neutral" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Neutral</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="est1" value="Slightly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="est1" value="Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="est1" value="Strongly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Agree</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700 hover:border-indigo-500/50 transition-colors">
+                    <label class="block text-base font-medium text-slate-200 mb-4">I get irritated easily.</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2">
+                        
+                        <label class="cursor-pointer">
+                            <input type="radio" name="est2" value="Strongly Disagree" class="peer sr-only" checked>
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="est2" value="Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="est2" value="Slightly Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="est2" value="Neutral" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Neutral</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="est2" value="Slightly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="est2" value="Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="est2" value="Strongly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Agree</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700 hover:border-indigo-500/50 transition-colors">
+                    <label class="block text-base font-medium text-slate-200 mb-4">I worry about things.</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2">
+                        
+                        <label class="cursor-pointer">
+                            <input type="radio" name="est3" value="Strongly Disagree" class="peer sr-only" checked>
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="est3" value="Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="est3" value="Slightly Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="est3" value="Neutral" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Neutral</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="est3" value="Slightly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="est3" value="Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="est3" value="Strongly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Agree</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700 hover:border-indigo-500/50 transition-colors">
+                    <label class="block text-base font-medium text-slate-200 mb-4">I change my mood a lot.</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2">
+                        
+                        <label class="cursor-pointer">
+                            <input type="radio" name="est4" value="Strongly Disagree" class="peer sr-only" checked>
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="est4" value="Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="est4" value="Slightly Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="est4" value="Neutral" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Neutral</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="est4" value="Slightly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="est4" value="Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="est4" value="Strongly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Agree</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700 hover:border-indigo-500/50 transition-colors">
+                    <label class="block text-base font-medium text-slate-200 mb-4">I have a soft heart.</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2">
+                        
+                        <label class="cursor-pointer">
+                            <input type="radio" name="agr1" value="Strongly Disagree" class="peer sr-only" checked>
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="agr1" value="Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="agr1" value="Slightly Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="agr1" value="Neutral" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Neutral</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="agr1" value="Slightly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="agr1" value="Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="agr1" value="Strongly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Agree</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700 hover:border-indigo-500/50 transition-colors">
+                    <label class="block text-base font-medium text-slate-200 mb-4">I am interested in people.</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2">
+                        
+                        <label class="cursor-pointer">
+                            <input type="radio" name="agr2" value="Strongly Disagree" class="peer sr-only" checked>
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="agr2" value="Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="agr2" value="Slightly Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="agr2" value="Neutral" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Neutral</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="agr2" value="Slightly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="agr2" value="Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="agr2" value="Strongly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Agree</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700 hover:border-indigo-500/50 transition-colors">
+                    <label class="block text-base font-medium text-slate-200 mb-4">I insult people.</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2">
+                        
+                        <label class="cursor-pointer">
+                            <input type="radio" name="agr3" value="Strongly Disagree" class="peer sr-only" checked>
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="agr3" value="Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="agr3" value="Slightly Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="agr3" value="Neutral" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Neutral</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="agr3" value="Slightly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="agr3" value="Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="agr3" value="Strongly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Agree</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700 hover:border-indigo-500/50 transition-colors">
+                    <label class="block text-base font-medium text-slate-200 mb-4">I am not really interested in others.</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2">
+                        
+                        <label class="cursor-pointer">
+                            <input type="radio" name="agr4" value="Strongly Disagree" class="peer sr-only" checked>
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="agr4" value="Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="agr4" value="Slightly Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="agr4" value="Neutral" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Neutral</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="agr4" value="Slightly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="agr4" value="Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="agr4" value="Strongly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Agree</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700 hover:border-indigo-500/50 transition-colors">
+                    <label class="block text-base font-medium text-slate-200 mb-4">I am always prepared.</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2">
+                        
+                        <label class="cursor-pointer">
+                            <input type="radio" name="csn1" value="Strongly Disagree" class="peer sr-only" checked>
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="csn1" value="Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="csn1" value="Slightly Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="csn1" value="Neutral" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Neutral</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="csn1" value="Slightly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="csn1" value="Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="csn1" value="Strongly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Agree</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700 hover:border-indigo-500/50 transition-colors">
+                    <label class="block text-base font-medium text-slate-200 mb-4">I leave my belongings around.</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2">
+                        
+                        <label class="cursor-pointer">
+                            <input type="radio" name="csn2" value="Strongly Disagree" class="peer sr-only" checked>
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="csn2" value="Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="csn2" value="Slightly Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="csn2" value="Neutral" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Neutral</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="csn2" value="Slightly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="csn2" value="Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="csn2" value="Strongly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Agree</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700 hover:border-indigo-500/50 transition-colors">
+                    <label class="block text-base font-medium text-slate-200 mb-4">I follow a schedule.</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2">
+                        
+                        <label class="cursor-pointer">
+                            <input type="radio" name="csn3" value="Strongly Disagree" class="peer sr-only" checked>
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="csn3" value="Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="csn3" value="Slightly Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="csn3" value="Neutral" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Neutral</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="csn3" value="Slightly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="csn3" value="Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="csn3" value="Strongly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Agree</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700 hover:border-indigo-500/50 transition-colors">
+                    <label class="block text-base font-medium text-slate-200 mb-4">I make a mess of things.</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2">
+                        
+                        <label class="cursor-pointer">
+                            <input type="radio" name="csn4" value="Strongly Disagree" class="peer sr-only" checked>
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="csn4" value="Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="csn4" value="Slightly Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="csn4" value="Neutral" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Neutral</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="csn4" value="Slightly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="csn4" value="Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="csn4" value="Strongly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Agree</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700 hover:border-indigo-500/50 transition-colors">
+                    <label class="block text-base font-medium text-slate-200 mb-4">I have a rich vocabulary.</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2">
+                        
+                        <label class="cursor-pointer">
+                            <input type="radio" name="opn1" value="Strongly Disagree" class="peer sr-only" checked>
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="opn1" value="Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="opn1" value="Slightly Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="opn1" value="Neutral" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Neutral</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="opn1" value="Slightly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="opn1" value="Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="opn1" value="Strongly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Agree</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700 hover:border-indigo-500/50 transition-colors">
+                    <label class="block text-base font-medium text-slate-200 mb-4">I have difficulty understanding abstract ideas.</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2">
+                        
+                        <label class="cursor-pointer">
+                            <input type="radio" name="opn2" value="Strongly Disagree" class="peer sr-only" checked>
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="opn2" value="Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="opn2" value="Slightly Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="opn2" value="Neutral" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Neutral</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="opn2" value="Slightly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="opn2" value="Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="opn2" value="Strongly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Agree</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700 hover:border-indigo-500/50 transition-colors">
+                    <label class="block text-base font-medium text-slate-200 mb-4">I do not have a good imagination.</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2">
+                        
+                        <label class="cursor-pointer">
+                            <input type="radio" name="opn3" value="Strongly Disagree" class="peer sr-only" checked>
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="opn3" value="Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="opn3" value="Slightly Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="opn3" value="Neutral" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Neutral</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="opn3" value="Slightly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="opn3" value="Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="opn3" value="Strongly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Agree</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700 hover:border-indigo-500/50 transition-colors">
+                    <label class="block text-base font-medium text-slate-200 mb-4">I use difficult words.</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2">
+                        
+                        <label class="cursor-pointer">
+                            <input type="radio" name="opn4" value="Strongly Disagree" class="peer sr-only" checked>
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="opn4" value="Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="opn4" value="Slightly Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="opn4" value="Neutral" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Neutral</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="opn4" value="Slightly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="opn4" value="Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="opn4" value="Strongly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Agree</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700 hover:border-indigo-500/50 transition-colors">
+                    <label class="block text-base font-medium text-slate-200 mb-4">I am afraid of change.</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2">
+                        
+                        <label class="cursor-pointer">
+                            <input type="radio" name="otc" value="Strongly Disagree" class="peer sr-only" checked>
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="otc" value="Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="otc" value="Slightly Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="otc" value="Neutral" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Neutral</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="otc" value="Slightly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="otc" value="Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="otc" value="Strongly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Agree</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700 hover:border-indigo-500/50 transition-colors">
+                    <label class="block text-base font-medium text-slate-200 mb-4">I put worldly pleasures before productivity.</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2">
+                        
+                        <label class="cursor-pointer">
+                            <input type="radio" name="hed" value="Strongly Disagree" class="peer sr-only" checked>
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="hed" value="Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="hed" value="Slightly Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="hed" value="Neutral" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Neutral</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="hed" value="Slightly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="hed" value="Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="hed" value="Strongly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Agree</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700 hover:border-indigo-500/50 transition-colors">
+                    <label class="block text-base font-medium text-slate-200 mb-4">I feel connected to all living beings, including plants and animals.</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2">
+                        
+                        <label class="cursor-pointer">
+                            <input type="radio" name="ste1" value="Strongly Disagree" class="peer sr-only" checked>
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="ste1" value="Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="ste1" value="Slightly Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="ste1" value="Neutral" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Neutral</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="ste1" value="Slightly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="ste1" value="Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="ste1" value="Strongly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Agree</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700 hover:border-indigo-500/50 transition-colors">
+                    <label class="block text-base font-medium text-slate-200 mb-4">I see a connection between who I am at all places and times.</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2">
+                        
+                        <label class="cursor-pointer">
+                            <input type="radio" name="ste2" value="Strongly Disagree" class="peer sr-only" checked>
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="ste2" value="Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="ste2" value="Slightly Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="ste2" value="Neutral" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Neutral</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="ste2" value="Slightly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="ste2" value="Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="ste2" value="Strongly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Agree</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700 hover:border-indigo-500/50 transition-colors">
+                    <label class="block text-base font-medium text-slate-200 mb-4">I experience my self as more than my thoughts and feelings.</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2">
+                        
+                        <label class="cursor-pointer">
+                            <input type="radio" name="ste3" value="Strongly Disagree" class="peer sr-only" checked>
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="ste3" value="Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="ste3" value="Slightly Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="ste3" value="Neutral" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Neutral</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="ste3" value="Slightly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="ste3" value="Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="ste3" value="Strongly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Agree</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700 hover:border-indigo-500/50 transition-colors">
+                    <label class="block text-base font-medium text-slate-200 mb-4">I am able to step back from my emotions and observe them from a separate point of view.</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2">
+                        
+                        <label class="cursor-pointer">
+                            <input type="radio" name="ste4" value="Strongly Disagree" class="peer sr-only" checked>
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="ste4" value="Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="ste4" value="Slightly Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="ste4" value="Neutral" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Neutral</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="ste4" value="Slightly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="ste4" value="Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="ste4" value="Strongly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Agree</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700 hover:border-indigo-500/50 transition-colors">
+                    <label class="block text-base font-medium text-slate-200 mb-4">I am capable of holding meaningful or respectful conversations.</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2">
+                        
+                        <label class="cursor-pointer">
+                            <input type="radio" name="con" value="Strongly Disagree" class="peer sr-only" checked>
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="con" value="Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="con" value="Slightly Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="con" value="Neutral" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Neutral</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="con" value="Slightly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="con" value="Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="con" value="Strongly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Agree</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700 hover:border-indigo-500/50 transition-colors">
+                    <label class="block text-base font-medium text-slate-200 mb-4">I have control over my emotions.</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2">
+                        
+                        <label class="cursor-pointer">
+                            <input type="radio" name="emo" value="Strongly Disagree" class="peer sr-only" checked>
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="emo" value="Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="emo" value="Slightly Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="emo" value="Neutral" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Neutral</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="emo" value="Slightly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="emo" value="Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="emo" value="Strongly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Agree</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700 hover:border-indigo-500/50 transition-colors">
+                    <label class="block text-base font-medium text-slate-200 mb-4">I am self-motivated and driven to continually improve myself.</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2">
+                        
+                        <label class="cursor-pointer">
+                            <input type="radio" name="set1" value="Strongly Disagree" class="peer sr-only" checked>
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="set1" value="Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="set1" value="Slightly Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="set1" value="Neutral" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Neutral</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="set1" value="Slightly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="set1" value="Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="set1" value="Strongly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Agree</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700 hover:border-indigo-500/50 transition-colors">
+                    <label class="block text-base font-medium text-slate-200 mb-4">I am willing to step outside of my comfort zone in order to challenge myself and grow.</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2">
+                        
+                        <label class="cursor-pointer">
+                            <input type="radio" name="set2" value="Strongly Disagree" class="peer sr-only" checked>
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="set2" value="Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="set2" value="Slightly Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="set2" value="Neutral" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Neutral</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="set2" value="Slightly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="set2" value="Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="set2" value="Strongly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Agree</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700 hover:border-indigo-500/50 transition-colors">
+                    <label class="block text-base font-medium text-slate-200 mb-4">I am open to constructive criticism and use it to improve myself.</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2">
+                        
+                        <label class="cursor-pointer">
+                            <input type="radio" name="set3" value="Strongly Disagree" class="peer sr-only" checked>
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="set3" value="Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="set3" value="Slightly Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="set3" value="Neutral" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Neutral</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="set3" value="Slightly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="set3" value="Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="set3" value="Strongly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Agree</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700 hover:border-indigo-500/50 transition-colors">
+                    <label class="block text-base font-medium text-slate-200 mb-4">I am proactive in seeking out opportunities for self-enhancement.</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2">
+                        
+                        <label class="cursor-pointer">
+                            <input type="radio" name="set4" value="Strongly Disagree" class="peer sr-only" checked>
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="set4" value="Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="set4" value="Slightly Disagree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Disagree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="set4" value="Neutral" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Neutral</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="set4" value="Slightly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Slight Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="set4" value="Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Agree</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="set4" value="Strongly Agree" class="peer sr-only" >
+                            <div class="h-full flex items-center justify-center text-center p-2 bg-slate-700/50 border border-slate-600 rounded text-slate-300 peer-checked:bg-indigo-500 peer-checked:border-indigo-500 peer-checked:text-white hover:bg-slate-600 transition-all text-[11px] leading-tight font-medium">Strong Agree</div>
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="mt-12 pt-8 border-t border-slate-700 flex justify-center">
+            <button type="submit" class="bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 text-white font-bold py-4 px-12 rounded-full shadow-lg shadow-indigo-500/30 transition-all transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-indigo-500/50 text-lg">
+                Predict My Career Path
+            </button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
